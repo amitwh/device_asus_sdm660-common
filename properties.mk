@@ -33,8 +33,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.af.client_heap_size_kbyte=7168 \
     vendor.audio.volume.headset.gain.depcal=true \
     persist.vendor.bt.aac_frm_ctl.enabled=true \
-    vendor.audio.spkr_prot.tx.sampling_rate=48000 \
-    persist.vendor.audio.hw.binder.size_kbyte=1024
+    vendor.audio.spkr_prot.tx.sampling_rate=48000
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.afe_proxy.enable=true \
@@ -112,18 +111,17 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.disable_backpressure=1 \
     debug.sf.early_app_phase_offset_ns=1500000 \
     debug.sf.early_gl_app_phase_offset_ns=15000000 \
     debug.sf.early_gl_phase_offset_ns=3000000 \
     debug.sf.early_phase_offset_ns=1500000 \
-    debug.sf.enable_gl_backpressure=1 \
     debug.sf.enable_hwc_vds=1 \
     debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
     ro.opengles.version=196610 \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.max_virtual_display_dimension=4096 \
-    ro.surface_flinger.protected_contents=true \
     ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
     ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000 \
     ro.vendor.display.cabl=0 \
@@ -131,19 +129,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.enable_default_color_mode=1 \
     vendor.gralloc.enable_fb_ubwc=1
 
-# DRM
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
-
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
-# GMS
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase.ms=android-asus-tpin
-    ro.com.google.rlzbrandcode=ASUP
-    ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
 
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -155,19 +143,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.data.iwlan.enable=true \
     ro.telephony.iwlan_operation_mode=legacy
-
-# LMKD
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lmk.low=1001 \
-    ro.lmk.medium=0 \
-    ro.lmk.critical=0 \
-    ro.lmk.critical_upgrade=false \
-    ro.lmk.upgrade_pressure=100 \
-    ro.lmk.downgrade_pressure=100 \
-    ro.lmk.kill_heaviest_task=true \
-    ro.lmk.kill_timeout_ms=100 \
-    ro.lmk.use_minfree_levels=true \
-    ro.lmk.log_stats=true
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -193,6 +168,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.device_config.runtime_native.usap_pool_enabled=true 
+
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=dsds \
@@ -201,6 +179,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.atfwd.start=true \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.data_con_rprt=1 \
     persist.vendor.radio.sib16_support=1 \
     ro.telephony.default_network=22,22 \
     ro.vendor.use_data_netmgrd=true
@@ -213,13 +192,13 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.sdk.sensors.gestures=false \
-    ro.vendor.sensors.cmc=false \
-    ro.vendor.sensors.facing=false \
-    ro.vendor.sensors.dev_ori=true \
-    ro.vendor.sensors.pmd=true \
-    ro.vendor.sensors.sta_detect=true \
-    ro.vendor.sensors.mot_detect=true
+    ro.vendor.qti.sdk.sensors.gestures=false \
+    ro.vendor.qti.sensors.cmc=false \
+    ro.vendor.qti.sensors.facing=false \
+    ro.vendor.qti.sensors.dev_ori=true \
+    ro.vendor.qti.sensors.pmd=true \
+    ro.vendor.qti.sensors.sta_detect=true \
+    ro.vendor.qti.sensors.mot_detect=true
 
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -345,7 +345,9 @@ function configure_zram_parameters() {
 
     RamSizeGB=`echo "($MemTotal / 1048576 ) + 1" | bc`
     zRamSizeBytes=`echo "$RamSizeGB * 1024 * 1024 * 1024 / 2" | bc`
-    if [ $zRamSizeBytes -gt 4294967296 ]; then
+    zRamSizeMB=`echo "$RamSizeGB * 1024 / 2" | bc`
+    # use MB avoid 32 bit overflow
+    if [ $zRamSizeMB -gt 4096 ]; then
         zRamSizeBytes=4294967296
     fi
 
@@ -2630,6 +2632,12 @@ case "$target" in
                         ;;
                 esac
             ;;
+        esac
+
+        # Start cdsprpcd only for sdm660 and disable for sdm630 and sdm636
+        case "$soc_id" in
+            "317" | "324" | "325" | "326" )
+            start vendor.cdsprpcd
         esac
 
         #Apply settings for sdm630 and Tahaa
